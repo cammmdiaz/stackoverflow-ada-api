@@ -19,3 +19,5 @@ class UserModel {
 
 const user = new UserModel()
 user.getAll()
+
+export const userModel = new UserModel();

@@ -17,3 +17,5 @@ class PostModel {
         return commentsJson.items
     }
 }
+
+export const postModel = new PostModel ();
