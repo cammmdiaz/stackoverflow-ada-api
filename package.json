@@ -6,12 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "dev-user-api": "ts-node ./src/database/user_api.ts",
+    "dev-user-model": "ts-node ./src/models/user_model.ts",
+    "dev-post-api": "ts-node ./src/database/post_api.ts",
+    "dev-post-model": "ts-node ./src/model/post_model.ts"
   },
   "author": "camila diaz",
   "license": "ISC",
   "dependencies": {
+    "sprintf-js": "^1.1.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "@types/sprintf-js": "^1.1.4"
   }
 }

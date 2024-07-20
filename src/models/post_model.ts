@@ -1,18 +1,19 @@
+import { getAll, getCommentsByPostId, getCommentsByUserId } from "../external_api/post_api";
 import { Post } from "./post";
 
 class PostModel {
-    public getAll(): Post[] {
-        // todo
-        return []
+    public async getAll(from: string, to: string): Promise<Post[]> {
+        const postsJson = await getAll(from,to);
+        return postsJson.items
     }
 
-    public getCommentsByPostId(postId: string): Post[] {
-        // todo
-        return []
+    public async getCommentsByPostId(postId: string, from: string, to: string): Promise<Post[]> {
+        const commentsJson = await getCommentsByPostId(postId,from,to);
+        return commentsJson.items
     }
 
-    public getCommentsByUserId(userId: string): Post[] {
-        // todo
-        return []
+    public async getCommentsByUserId(userId: string): Promise<Post[]> {
+        const commentsJson = await getCommentsByUserId(userId);
+        return commentsJson.items
     }
 }
