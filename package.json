@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node index.ts",
     "build": "tsc",
-    "dev-user-api": "ts-node ./src/database/user_api.ts",
+    "dev-user-api": "ts-node ./src/external_api/user_api.ts",
     "dev-user-model": "ts-node ./src/models/user_model.ts",
-    "dev-post-api": "ts-node ./src/database/post_api.ts",
+    "dev-post-api": "ts-node ./src/external_api/post_api.ts",
     "dev-post-model": "ts-node ./src/model/post_model.ts"
   },
   "author": "camila diaz",

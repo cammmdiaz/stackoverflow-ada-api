@@ -2,7 +2,7 @@ import { CLIENT_ID, CLIENT_SECRECT } from "../utils/key";
 import { COMMENTS_URL_BY_POST, COMMENTS_URL_BY_USER, POST_URL_ALL } from "../utils/url";
 import { sprintf } from 'sprintf-js';
 
-async function getAll(from: string, to: string): Promise<any> {
+async function getAll(from: number, to: number): Promise<any> {
   const url = sprintf(POST_URL_ALL, from, to)
   const response = await fetch(url, {
     method: "GET",
@@ -14,7 +14,7 @@ async function getAll(from: string, to: string): Promise<any> {
   )
   const data = await response.json()
   //console.log(data)
-  //return data
+  return data
 }
 
 async function getCommentsByPostId(postId: string, from: string, to: string): Promise<any> {

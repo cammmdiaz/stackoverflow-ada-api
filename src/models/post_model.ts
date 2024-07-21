@@ -2,13 +2,13 @@ import { getAll, getCommentsByPostId, getCommentsByUserId } from "../external_ap
 import { Post } from "./post";
 
 class PostModel {
-    public async getAll(from: string, to: string): Promise<Post[]> {
-        const postsJson = await getAll(from,to);
+    public async getAll(from: number, to: number): Promise<Post[]> {
+        const postsJson = await getAll(from, to);
         return postsJson.items
     }
 
     public async getCommentsByPostId(postId: string, from: string, to: string): Promise<Post[]> {
-        const commentsJson = await getCommentsByPostId(postId,from,to);
+        const commentsJson = await getCommentsByPostId(postId, from, to);
         return commentsJson.items
     }
 
@@ -18,4 +18,4 @@ class PostModel {
     }
 }
 
-export const postModel = new PostModel ();
+export const postModel = new PostModel();

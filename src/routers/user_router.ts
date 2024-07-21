@@ -1,7 +1,8 @@
 import { userController } from "../controllers/user_controller"
-import { Request } from "../utils/request_type"
+import { Request,Response, ResponseType } from "../utils/type"
+import { ACTION_INCORRECT } from "../utils/message"
 
-export async function routerForUser(request: Request) {
+export async function routerForUser(request: Request):Promise<Response> {
     if (request.action === "/user/all") {
         return await userController.getAll()
     }
@@ -10,5 +11,5 @@ export async function routerForUser(request: Request) {
         return await userController.getById(request.body.userId)
     }
 
-    return "This action was not found"
+    return { responseType: ResponseType.ERROR, message: ACTION_INCORRECT, body:null }
 }

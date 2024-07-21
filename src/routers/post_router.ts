@@ -1,7 +1,9 @@
 import { postController } from "../controllers/post_controller"
-import { Request } from "../utils/request_type"
+import { Request ,Response, ResponseType} from "../utils/type"
+import { ACTION_INCORRECT } from "../utils/message"
 
-export async function routerForPost(request: Request) {
+export async function routerForPost(request: Request):Promise<Response> {
+    
     if (request.action === "/post/all") {
         return await postController.getAll(request.body.from, request.body.to)
     }
@@ -14,5 +16,5 @@ export async function routerForPost(request: Request) {
         return await postController.getCommentsByUserId(request.body.userId)
     }
 
-    return "This action was not found"
+    return { responseType: ResponseType.ERROR, message: ACTION_INCORRECT, body:null }
 }
