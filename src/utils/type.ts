@@ -1,11 +1,11 @@
+export enum ResponseType {
+    ERROR = "ERROR",
+    SUCCESS = "SUCCESS",
+}
+
 export interface Request {
     action: string,
     body: any | null,
-}
-
-export enum ResponseType {
-    ERROR,
-    SUCCESS,
 }
 
 export interface Response {

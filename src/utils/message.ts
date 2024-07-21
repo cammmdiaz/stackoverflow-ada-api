@@ -4,4 +4,6 @@ export const PARAMS_INCORRECT: string = "[ERROR] Incorrect parameters"
 
 export const USER_ID_INCORRECT: string = "[ERROR] Incorrect user id"
 
-export const DATE_INCORRECT: string = "[ERROR] Incorrect date (it should be the format yyyy-mm-dd)"
+export const DATE_INCORRECT: string = "[ERROR] Incorrect date. It should be the format yyyy-mm-dd with month and day valids"
+
+export const BAD_REQUEST: string = "[Error] Bad request: "

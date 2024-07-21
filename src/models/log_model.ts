@@ -3,8 +3,8 @@ import { Log } from "./log";
 
 class LogModel {
     async save(request: Log, response: Log) {
-        appendLog(request)
-        appendLog(response)
+        await appendLog(request)
+        await appendLog(response)
     }
 
     async getAll(): Promise<Log[]> {

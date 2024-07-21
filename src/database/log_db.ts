@@ -17,7 +17,9 @@ export async function appendLog(log: Log) {
     const exists = await fileExists()
     if (exists) {
         const existingData = await fs.readFile(path, ENCODING)
-        logs = JSON.parse(existingData)
+        if (existingData && existingData !== "") {
+            logs = JSON.parse(existingData)
+        }  
     }
 
     logs.push(log)

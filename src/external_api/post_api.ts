@@ -4,6 +4,7 @@ import { sprintf } from 'sprintf-js';
 
 async function getAll(from: number, to: number): Promise<any> {
   const url = sprintf(POST_URL_ALL, from, to)
+  // console.log(url)
   const response = await fetch(url, {
     method: "GET",
     headers: {
@@ -13,11 +14,11 @@ async function getAll(from: number, to: number): Promise<any> {
   }
   )
   const data = await response.json()
-  //console.log(data)
+  // console.log(data)
   return data
 }
 
-async function getCommentsByPostId(postId: string, from: string, to: string): Promise<any> {
+async function getCommentsByPostId(postId: string, from: number, to: number): Promise<any> {
   const url = sprintf(COMMENTS_URL_BY_POST, postId, from, to)
   const response = await fetch(url, {
     method: "GET",
@@ -34,7 +35,7 @@ async function getCommentsByPostId(postId: string, from: string, to: string): Pr
 
 async function getCommentsByUserId(userId: string): Promise<any> {
   const url = sprintf(COMMENTS_URL_BY_USER,userId)
-  console.log(url)
+  // console.log(url)
   const response = await fetch(url, {
     method: "GET",
     headers: {
@@ -44,7 +45,7 @@ async function getCommentsByUserId(userId: string): Promise<any> {
   }
   )
   const data = await response.json()
-  console.log(data)
+  // console.log(data)
   return data
 }
 
@@ -52,4 +53,4 @@ export { getAll, getCommentsByPostId, getCommentsByUserId };
 
 // getAll("1719792000", "1721174400")
 // getCommentsByPostId("78752899", "1719792000", "1721174400")
-getCommentsByUserId("9393102")
+// getCommentsByUserId("9393102")

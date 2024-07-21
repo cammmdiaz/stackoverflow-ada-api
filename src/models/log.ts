@@ -1,14 +1,14 @@
 export enum RequestType {
-    postGetAll,
-    getCommentsByPostId,
-    getCommentsByUserId,
-    userGetAll,
-    getById,
+    postGetAll = "postGetAll",
+    getCommentsByPostId = "getCommentsByPostId",
+    getCommentsByUserId = "getCommentsByUserId",
+    userGetAll = "userGetAll",
+    getById = "getById",
 }
 
 export enum Action {
-    REQUEST,
-    RESPONSE,
+    REQUEST = "REQUEST",
+    RESPONSE = "RESPONSE",
 }
 
 export interface Log {

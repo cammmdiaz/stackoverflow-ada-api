@@ -6,6 +6,8 @@ import { getValidDate } from "../utils/date"
 import { DATE_INCORRECT, PARAMS_INCORRECT } from "../utils/message"
 import { Response, ResponseType } from "../utils/type"
 
+const THOUSAND = 1000
+
 class PostController {
     async getAll(from: string | null | undefined, to: string | null | undefined): Promise<Response> {
         const requestLog: Log = { type: RequestType.postGetAll, action: Action.REQUEST, params: { from, to }, body: null }
@@ -27,8 +29,15 @@ class PostController {
             return errorResponse
         }
 
-        const posts: Post[] = await postModel.getAll(fromDate.getTime(), toDate.getTime())
-        const sucessResponse: Response = { responseType: ResponseType.SUCCESS, message: null, body: posts }
+        const result: Post[] | string = await postModel.getAll(Math.floor(fromDate.getTime()/THOUSAND), Math.floor(toDate.getTime()/THOUSAND))
+        if (typeof result === "string") {
+            const error: Response = { responseType: ResponseType.ERROR, message: result, body: null }
+            const responseLog: Log = { type: RequestType.getById, action: Action.RESPONSE, params: null, body: error }
+            logModel.save(requestLog, responseLog)
+
+            return error
+        }
+        const sucessResponse: Response = { responseType: ResponseType.SUCCESS, message: null, body: result }
 
         const responseLog: Log = { type: RequestType.postGetAll, action: Action.RESPONSE, params: null, body: sucessResponse }
         logModel.save(requestLog, responseLog)
@@ -56,8 +65,16 @@ class PostController {
             return errorResponse
         }
 
-        const posts: Post[] = await postModel.getCommentsByPostId(postId, from, to)
-        const sucessResponse: Response = { responseType: ResponseType.SUCCESS, message: null, body: posts }
+        const result: Post[] | string = await postModel.getCommentsByPostId(postId, Math.floor(fromDate.getTime()/THOUSAND), Math.floor(toDate.getTime()/THOUSAND))
+        if (typeof result === "string") {
+            const error: Response = { responseType: ResponseType.ERROR, message: result, body: null }
+            const responseLog: Log = { type: RequestType.getById, action: Action.RESPONSE, params: null, body: error }
+            logModel.save(requestLog, responseLog)
+
+            return error
+        }
+
+        const sucessResponse: Response = { responseType: ResponseType.SUCCESS, message: null, body: result }
 
         const responseLog: Log = { type: RequestType.getCommentsByPostId, action: Action.RESPONSE, params: null, body: sucessResponse }
         logModel.save(requestLog, responseLog)
@@ -75,8 +92,16 @@ class PostController {
             return errorResponse
         }
 
-        const posts: Post[] = await postModel.getCommentsByUserId(userId)
-        const sucessResponse: Response = { responseType: ResponseType.SUCCESS, message: null, body: posts }
+        const result: Post[] | string = await postModel.getCommentsByUserId(userId)
+        if (typeof result === "string") {
+            const error: Response = { responseType: ResponseType.ERROR, message: result, body: null }
+            const responseLog: Log = { type: RequestType.getById, action: Action.RESPONSE, params: null, body: error }
+            logModel.save(requestLog, responseLog)
+
+            return error
+        }
+
+        const sucessResponse: Response = { responseType: ResponseType.SUCCESS, message: null, body: result }
 
         const responseLog: Log = { type: RequestType.getCommentsByUserId, action: Action.RESPONSE, params: null, body: sucessResponse }
         logModel.save(requestLog, responseLog)

@@ -33,5 +33,5 @@ async function getById(userId: string): Promise<any> {
 
 export { getAll, getById }
 
-// getById()
+// getById("223092")
 // getAll()

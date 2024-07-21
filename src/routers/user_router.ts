@@ -8,7 +8,7 @@ export async function routerForUser(request: Request):Promise<Response> {
     }
 
     if (request.action === "/user/id") {
-        return await userController.getById(request.body.userId)
+        return await userController.getById(request?.body?.userId)
     }
 
     return { responseType: ResponseType.ERROR, message: ACTION_INCORRECT, body:null }
