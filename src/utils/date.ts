@@ -13,5 +13,9 @@ export function getValidDate(dateString: string): Date | null {
         return null
     }
 
+    if (year < 1000 || year > 9999) {
+        return null
+    }
+
     return new Date(year, month - 1, day)
 }
