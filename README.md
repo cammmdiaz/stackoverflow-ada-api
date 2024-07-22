@@ -82,16 +82,16 @@ En el index.ts se desarrolló la lógice del server, mientras que en el client.t
 
 ### ¿Cómo se ejecuta el proyecto?
 
-## 1.Ejecute en la terminal:
+***1.Ejecute en la terminal:***
 npm i
 
-## 2.Ejecute:
+***2.Ejecute:***
 npm run build
 
-## 3.Ejecute primero el server:
+***3.Ejecute primero el server:***
 npm run server
 
-## 4.Despues, cuando el server esté escuchando (en la consola tiene que ver el mensaje "Listening in port: 7777"), ejecute la siguiente instrucción para que el cliente funcione:
+***4.Despues, cuando el server esté escuchando (en la consola tiene que ver el mensaje "Listening in port: 7777"), ejecute la siguiente instrucción para que el cliente funcione:***
 npm run client
 
 El resultado de la funcionalidad que haya ejecutado, se mostrará en la terminal donde el client se esté ejecutando.
